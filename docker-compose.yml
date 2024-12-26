@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  db:
+    build: ./db
+    container_name: ip_bolt_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: ip_bolt
+    volumes:
+      - ip_bolt_db:/var/lib/postgresql/data
+    networks:
+      - ip_bolt_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: ip_bolt_pgadmin
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ipbolt.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - ip_bolt_pgadmin:/var/lib/postgresql/data
+    networks:
+      - ip_bolt_net
+
+networks:
+  ip_bolt_net:
+
+volumes:
+  ip_bolt_db:
+  ip_bolt_pgadmin:
+

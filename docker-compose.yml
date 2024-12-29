@@ -29,10 +29,67 @@ services:
     networks:
       - ip_bolt_net
 
+  keycloak:
+    build: ./keycloak
+    container_name: ip_bolt_keycloak
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      KC_DB_URL: jdbc:postgresql://db:5432/keycloak
+      KC_DB: postgres
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
+
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+
+      KC_TRANSACTION_MANAGER_ENABLE_RECOVERY: "true"
+
+      KC_HOSTNAME: localhost
+      KC_HTTP_PORT: 8080
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT: "false"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+    networks:
+      - ip_bolt_net
+    depends_on:
+      - db
+
+  api:
+    build: ./api
+    container_name: ip_bolt_api
+    restart: always
+    ports:
+      - "8081:8080"
+    environment:
+      DATABASE_URL: postgresql://admin:admin@db:5432/ip_bolt
+    networks:
+      - ip_bolt_net
+    depends_on:
+      - db
+      - keycloak
+
+  backoffice:
+    build: ./backoffice
+    container_name: ip_bolt_backoffice
+    restart: always
+    ports:
+      - "4200:80"
+    networks:
+      - ip_bolt_net
+    depends_on:
+      - db
+      - keycloak
+      - api
+    environment:
+      - NODE_ENV=production
+
 networks:
   ip_bolt_net:
 
 volumes:
   ip_bolt_db:
   ip_bolt_pgadmin:
+  ip_bolt_keycloak:
 

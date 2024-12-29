@@ -1,32 +1,33 @@
-SET search_path TO ip_bolt;
+SET
+search_path TO ip_bolt;
 --  ==============================
 --  Seed basic backoffice users
 --  ==============================
-INSERT INTO users (username, password_hash, first_name, last_name, email, phone, role, created_by)
-VALUES ('admin', '$argon2id$v=19$m=12,t=3,p=1$MTdkenR2cXFhZWUwMDAwMA$WygQceqiLCRahKakqRsgiA', 'Admin', 'Adminovic',
+INSERT INTO users (keycloak_id, first_name, last_name, email, phone, role, created_by)
+VALUES ('b3a4594e-9411-4f72-9a5a-00810d003c75', 'Admin', 'Adminovic',
         'admin@ipbolt.com', '+42075133769', 'ADMIN', null);
 
-INSERT INTO users (username, password_hash, first_name, last_name, email, phone, role, created_by)
-VALUES ('operator', '$argon2id$v=19$m=12,t=3,p=1$MmQ5amNka2pwejAwMDAwMA$zv/doyR+z0Gc6EEqW3BshA', 'Operator',
+INSERT INTO users (keycloak_id, first_name, last_name, email, phone, role, created_by)
+VALUES ('8f2ef2ca-d730-4466-9c63-2c983f3b11ad', 'Operator',
         'Operatorovic', 'operator@ipbolt.com', '+42075696969', 'OPERATOR', 1),
-       ('manager', '$argon2id$v=19$m=12,t=3,p=1$NXBlOHZjcWNkZjkwMDAwMA$73sRAFYeQFgZLyRjC1kb7g', 'Manager',
+       ('4a2c28a2-62ed-45fb-bfe1-86b19d0a5d65', 'Manager',
         'Managerovic', 'manager@ipbolt.com', '+42075133769', 'MANAGER', 1);
 
 --  ==============================
 --  Seed basic client users
 --  ==============================
-INSERT INTO users (username, password_hash, first_name, last_name, email, phone, id_card_number, passport_number,
+INSERT INTO users (keycloak_id, first_name, last_name, email, phone, id_card_number, passport_number,
                    driving_license_number, role, blocked, avatar_url)
-VALUES ('client1', '$argon2id$v=19$m=12,t=3,p=1$OHExeTJlZWF5bDAwMDAwMA$yJaXNuc/8XubP3RJCxPkrA', 'Domaci',
+VALUES ('0318cc74-aac0-49d0-8918-1048e40dfc41', 'Domaci',
         'Bezvoznikovic', 'client1@somemail.com', '+38765111111', '11111111111111',
         null, null, 'CLIENT', FALSE, 'https://i.pravatar.cc/200'),
-       ('client2', '$argon2id$v=19$m=12,t=3,p=1$OHExeTJlZWF5bDAwMDAwMA$yJaXNuc/8XubP3RJCxPkrA', 'Domaci', 'Vozackovic',
+       ('b7fea21e-c4b4-11ef-b161-f76925db70b7', 'Domaci', 'Vozackovic',
         'client2@somemail.com', '+38765222222', '22222222222222',
         null, null, 'CLIENT', FALSE, 'https://i.pravatar.cc/200'),
-       ('client3', '$argon2id$v=19$m=12,t=3,p=1$OHExeTJlZWF5bDAwMDAwMA$yJaXNuc/8XubP3RJCxPkrA', 'Domaci', 'Banovanov',
+       ('b892f1d0-c4b4-11ef-bed3-179f0c1fba33', 'Domaci', 'Banovanov',
         'client3@somemail.com', '+38765333333', '33333333333333',
         null, '987654321', 'CLIENT', TRUE, 'https://i.pravatar.cc/200'),
-       ('client4', '$argon2id$v=19$m=12,t=3,p=1$OHExeTJlZWF5bDAwMDAwMA$yJaXNuc/8XubP3RJCxPkrA', 'Strani', 'Vozackovic',
+       ('b96738dc-c4b4-11ef-9e50-c721816ce154', 'Strani', 'Vozackovic',
         'client4@somemail.com', '+35455444444', null, '123456789',
         '987654321', 'CLIENT', FALSE, 'https://i.pravatar.cc/200');
 

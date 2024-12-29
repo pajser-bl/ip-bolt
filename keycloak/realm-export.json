@@ -1,0 +1,105 @@
+{
+  "realm": "ip_bolt_realm",
+  "enabled": true,
+  "users": [
+    {
+      "id": "b3a4594e-9411-4f72-9a5a-00810d003c75",
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@ipbolt.com",
+      "credentials": [
+        { "type": "password", "value": "admin", "temporary": false }
+      ],
+      "firstName": "Admin",
+      "lastName": "Adminovic",
+      "realmRoles": ["ADMIN"]
+    },
+    {
+      "id": "8f2ef2ca-d730-4466-9c63-2c983f3b11ad",
+      "username": "operator",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "operator@ipbolt.com",
+      "credentials": [
+        { "type": "password", "value": "operator", "temporary": false }
+      ],
+      "firstName": "Operator",
+      "lastName": "Operatorovic",
+      "realmRoles": ["OPERATOR"]
+    },
+    {
+      "id": "4a2c28a2-62ed-45fb-bfe1-86b19d0a5d65",
+      "username": "manager",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "manager@ipbolt.com",
+      "credentials": [
+        { "type": "password", "value": "manager", "temporary": false }
+      ],
+      "firstName": "Manager",
+      "lastName": "Managerovic",
+      "realmRoles": ["MANAGER"]
+    },
+    {
+      "id": "0318cc74-aac0-49d0-8918-1048e40dfc41",
+      "username": "client1",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "client1@somemail.com",
+      "credentials": [
+        { "type": "password", "value": "client", "temporary": false }
+      ],
+      "firstName": "Domaci",
+      "lastName": "Bezvoznikovic",
+      "realmRoles": ["CLIENT"]
+    },
+    {
+      "id": "b7fea21e-c4b4-11ef-b161-f76925db70b7",
+      "username": "client2",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "client2@somemail.com",
+      "credentials": [
+        { "type": "password", "value": "client", "temporary": false }
+      ],
+      "firstName": "Domaci",
+      "lastName": "Vozackovic",
+      "realmRoles": ["CLIENT"]
+    },
+    {
+      "id": "b892f1d0-c4b4-11ef-bed3-179f0c1fba33",
+      "username": "client3",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "client3@somemail.com",
+      "credentials": [
+        { "type": "password", "value": "client", "temporary": false }
+      ],
+      "firstName": "Domaci",
+      "lastName": "Banovanov",
+      "realmRoles": ["CLIENT"]
+    },
+    {
+      "id": "b96738dc-c4b4-11ef-9e50-c721816ce154",
+      "username": "client4",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "client4@somemail.com",
+      "credentials": [
+        { "type": "password", "value": "client", "temporary": false }
+      ],
+      "firstName": "Strani",
+      "lastName": "Vozackovic",
+      "realmRoles": ["CLIENT"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      { "name": "ADMIN" },
+      { "name": "OPERATOR" },
+      { "name": "MANAGER" },
+      { "name": "CLIENT" }
+    ]
+  }
+}

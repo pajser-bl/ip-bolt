@@ -78,12 +78,13 @@ services:
       - "4200:80"
     networks:
       - ip_bolt_net
+    environment:
+      - NODE_ENV=production
     depends_on:
       - db
       - keycloak
       - api
-    environment:
-      - NODE_ENV=production
+
 
 networks:
   ip_bolt_net:

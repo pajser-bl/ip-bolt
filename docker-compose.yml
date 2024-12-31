@@ -56,19 +56,19 @@ services:
     depends_on:
       - db
 
-  api:
-    build: ./api
-    container_name: ip_bolt_api
-    restart: always
-    ports:
-      - "8081:8080"
-    environment:
-      DATABASE_URL: postgresql://admin:admin@db:5432/ip_bolt
-    networks:
-      - ip_bolt_net
-    depends_on:
-      - db
-      - keycloak
+#  api:
+#    build: ./api
+#    container_name: ip_bolt_api
+#    restart: always
+#    ports:
+#      - "8081:8080"
+#    environment:
+#      DATABASE_URL: postgresql://admin:admin@db:5432/ip_bolt
+#    networks:
+#      - ip_bolt_net
+#    depends_on:
+#      - db
+#      - keycloak
 
   backoffice:
     build: ./backoffice
@@ -80,10 +80,13 @@ services:
       - ip_bolt_net
     environment:
       - NODE_ENV=production
+      - KEYCLOAK_URL=http://keycloak:8080/auth
+      - KEYCLOAK_REALM=ip_bolt_realm
+      - KEYCLOAK_CLIENT_ID=
     depends_on:
       - db
       - keycloak
-      - api
+#      - api
 
 
 networks:

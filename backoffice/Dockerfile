@@ -4,9 +4,14 @@ WORKDIR /app
 
 COPY package*.json package-lock.json ./
 
-RUN npm install && npm install -g @angular/cli
+RUN npm install && \
+    npm install -g @angular/cli
 
 COPY . .
+
+RUN sed -i 's|\${KEYCLOAK_URL}|'${KEYCLOAK_URL}'|g' src/environments/environment.prod.ts \
+    && sed -i 's|\${KEYCLOAK_REALM}|'${KEYCLOAK_REALM}'|g' src/environments/environment.prod.ts \
+    && sed -i 's|\${KEYCLOAK_CLIENT_ID}|'${KEYCLOAK_CLIENT_ID}'|g' src/environments/environment.prod.ts
 
 RUN ng build --configuration=production
 

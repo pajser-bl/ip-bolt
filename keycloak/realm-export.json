@@ -1,6 +1,45 @@
 {
   "realm": "ip_bolt_realm",
   "enabled": true,
+  "clients": [{
+    "clientId": "backoffice",
+    "enabled": true,
+    "protocol": "openid-connect",
+    "publicClient": true,
+    "secret": "60b08e42-c6fc-11ef-911e-b7281ab86ae9",
+    "redirectUris": [
+        "http://localhost:4200/*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+    "bearerOnly": false,
+    "standardFlowEnabled": true,
+    "implicitFlowEnabled": false,
+    "directAccessGrantsEnabled": true,
+    "serviceAccountsEnabled": false,
+    "authorizationServicesEnabled": false,
+    "clientAuthenticatorType": "public",
+    "fullScopeAllowed": true,
+    "defaultClientScopes": ["web-origins", "role_list", "profile", "email", "roles"],
+    "optionalClientScopes": [],
+    "protocolMappers": [
+        {
+          "name": "roles",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "multivalued": "false",
+            "user.attribute": "roles",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "roles",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+  }],
   "users": [
     {
       "id": "b3a4594e-9411-4f72-9a5a-00810d003c75",
